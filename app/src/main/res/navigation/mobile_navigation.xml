@@ -3,13 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_plato">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.proyecto.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_plato"
+        android:name="com.example.proyecto.ui.plato.PlatoFragment"
+        android:label="@string/menu_plato"
+        tools:layout="@layout/fragment_plato" >
+        <action
+            android:id="@+id/action_nav_plato_to_addPlatoFragment"
+            app:destination="@id/addPlatoFragment" />
+        <action
+            android:id="@+id/action_nav_plato_to_updatePlatoFragment"
+            app:destination="@id/updatePlatoFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_gallery"
@@ -22,4 +29,24 @@
         android:name="com.example.proyecto.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/addPlatoFragment"
+        android:name="com.example.proyecto.ui.plato.AddPlatoFragment"
+        android:label="fragment_add_plato"
+        tools:layout="@layout/fragment_add_plato" >
+        <action
+            android:id="@+id/action_addPlatoFragment_to_nav_plato"
+            app:destination="@id/nav_plato" />
+    </fragment>
+    <fragment
+        android:id="@+id/updatePlatoFragment"
+        android:name="com.example.proyecto.ui.plato.UpdatePlatoFragment"
+        android:label="fragment_update_plato"
+        tools:layout="@layout/fragment_update_plato" >
+        <action
+            android:id="@+id/action_updatePlatoFragment_to_nav_plato"
+            app:destination="@id/nav_plato" />
+        <argument android:name="plato"
+            app:argType="com.example.proyecto.model.Plato" />
+    </fragment>
 </navigation>
